@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link href="{{nodeModulePath}}/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="{{nodeModulePath}}/jsoneditor/dist/jsoneditor.min.js"></script>
+    <link href="{{webviewTemplatePath}}/css/common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container {{className}}">
+        <h2>{{title}}</h2>
+        <div class="limits-section">
+            <div class="metadata-item metadata-item--limits">
+                <div class="metadata-item-title">Timeout</div>
+                <div class="metadata-item-description">The timeout LIMIT in milliseconds after which the action is terminated.</div>
+                <div class="metadata-item-control">
+                    <input type="number" id="limits-timeout" class="input" />
+                </div>
+            </div>
+            <div class="metadata-item metadata-item--limits">
+                <div class="metadata-item-title">Memory</div>
+                <div class="metadata-item-description">The maximum memory LIMIT in MB for the action.</div>
+                <div class="metadata-item-control">
+                    <input type="number" id="limits-memory" class="input" />
+                </div>
+            </div>
+            <div class="metadata-item metadata-item--limits">
+                <div class="metadata-item-title">Log size</div>
+                <div class="metadata-item-description">The maximum log size LIMIT in MB for the action.</div>
+                <div class="metadata-item-control">
+                    <input type="text" id="limits-logs" class="input" />
+                </div>
+            </div>
+            <div class="metadata-item metadata-item--limits">
+                <div class="metadata-item-title">Concurrency</div>
+                <div class="metadata-item-description">The maximum intra-container concurrent activation LIMIT for the action.</div>
+                <div class="metadata-item-control">
+                    <input type="number" id="limits-concurrency" class="input" />
+                </div>
+            </div>
+        </div>
+        <div class="metadata-item">
+            <div class="metadata-item-title">Parameters</div>
+            <div id="paramsEditor" class="editor"></div>
+        </div>
+        <div class="metadata-item">
+            <div class="metadata-item-title">Annotations</div>
+            <div id="annotationsEditor" class="editor"></div>
+        </div>
+        <div class="metadata-footer">
+            <button class="button" onclick="update()">Save</button>
+        </div>
+    </div>
+    <script>
+        const vscode = acquireVsCodeApi();
+
+        const limistConcurrency = document.getElementById("limits-concurrency");
+        const limistLogs = document.getElementById("limits-logs");
+        const limistMemory = document.getElementById("limits-memory");
+        const limistTimeout = document.getElementById("limits-timeout");
+
+        // create the editor
+        const paramsEditorContainer = document.getElementById("paramsEditor")
+        const annotationsEditorContainer = document.getElementById("annotationsEditor");
+
+        const editorOption = {
+            mode: "code",
+            indentation: 4,
+            enableSort: false,
+            enableTransform: false,
+            statusBar: false,
+        };
+
+        // initialize editor instance
+        const paramsEditor = new JSONEditor(paramsEditorContainer, editorOption);
+        const annotationsEditor = new JSONEditor(annotationsEditorContainer, editorOption);
+
+        const setLimits = (limits) => {
+            limistConcurrency.value = limits.concurrency;
+            limistLogs.value = limits.logs;
+            limistMemory.value = limits.memory;
+            limistTimeout.value = limits.timeout;
+        }
+        const getLimits = () => {
+            return {
+                    concurrency: parseInt(limistConcurrency.value),
+                    logs: parseInt(limistLogs.value),
+                    memory: parseInt(limistMemory.value),
+                    timeout: parseInt(limistTimeout.value),
+            }
+        }
+
+        // add event listener
+        window.addEventListener('message', event => {
+            const message = event.data;
+            if (message.command === 'setEditor') {
+                paramsEditor.set(JSON.parse(message.parameters));
+                annotationsEditor.set(JSON.parse(message.annotations));
+                if (message.limits) {
+                    setLimits(message.limits);
+                }
+            }
+        })
+
+        // initialized
+        vscode.postMessage({
+            command: 'initialized',
+        })
+
+        function update() {
+            vscode.postMessage({
+                command: 'update',
+                parameters: paramsEditor.getText(),
+                annotations: annotationsEditor.getText(),
+                limits: getLimits()
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+/**
+ * Copyright 2020-present NAVER Corp.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+.jsoneditor {
+    margin: 10px 0;
+    border: none;
+    min-width: 400px;
+}
+.jsoneditor-menu {
+    background-color: var(--vscode-activityBar-background);
+    border: none;
+}
+.jsoneditor-repair {
+    display: none;
+}
+.jsoneditor-poweredBy {
+    display: none
+}
+.button {
+    font-size: 13px;
+    min-width: 140px;
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+    background: var(--vscode-button-background);
+    border: none;
+    color: var(--vscode-button-foreground);
+}
+.button:hover, .button:active {
+    background: var(--vscode-button-hoverBackground);
+}
+.input {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 200px;
+    padding: 5px;
+    font-size: 13px;
+    color: var(--vscode-input-foreground);
+    background: var(--vscode-input-background);
+    border: 1px solid var(--vscode-input-border);
+}
+.metadata-item {
+    padding-top: 12px;
+    padding-bottom: 14px;
+    font-size: 13px;
+}
+.metadata-item-title {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.metadata-item-description {
+    margin-bottom: 5px;
+}
+.metadata-item-control {
+    margin-top: 10px;
+}
+.metadata-footer {
+    margin-bottom: 20px;
+}
+.limits-section {
+    display: none;
+}
+.has-limits .limits-section {
+    display: block;
+}

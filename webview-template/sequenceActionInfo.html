@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Action Information</title>
+</head>
+<body>
+    <h1>Sequence Action Information</h1>
+    <ol id="actions"></ol>
+</body>
+<script>
+    const vscode = acquireVsCodeApi();
+    const state = vscode.getState();
+    if (state) {
+        setActionList(state.actions);
+    }
+
+    window.addEventListener('message', event => {
+        const message = event.data;
+        const list = document.getElementById('actions');
+        
+        if (message.command === 'getData' && message.actions) {
+            setActionList(message.actions);
+            vscode.setState({ actions: message.actions });
+        }
+    });
+
+    function setActionList(actions) {
+        const list = document.getElementById('actions');
+        actions.forEach(action => {
+            let li = document.createElement('li');
+            li.textContent = action;
+            list.appendChild(li);
+        });
+    }
+</script>
+</html>
