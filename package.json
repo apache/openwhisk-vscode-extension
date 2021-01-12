@@ -1,0 +1,406 @@
+{
+	"name": "openwhisk-vscode-extension",
+	"displayName": "DevTools for Apache Openwhisk",
+	"description": "DevTools for Apache OpenWhisk",
+	"version": "1.1.0",
+	"publisher": "NAVER",
+	"engines": {
+		"vscode": "^1.41.0"
+	},
+	"icon": "resource/marketplace-icon.png",
+	"license": "LICENSE.txt",
+	"categories": [
+		"Other"
+	],
+	"homepage": "https://github.com/naver/openwhisk-vscode-extension/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/naver/openwhisk-vscode-extension.git"
+	},
+	"activationEvents": [
+		"onCommand:wskdeploy.createProject",
+		"onView:wskEntities",
+		"onView:wskdeploy"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"viewsWelcome": [
+			{
+				"view": "wskdeploy",
+				"contents": "No manifests found [learn more](https://github.com/apache/openwhisk-wskdeploy/blob/master/docs/wskdeploy_action_helloworld.md#actions).\n[Create a wskdeploy project](command:wskdeploy.createProject)"
+			},
+			{
+				"view": "wskEntities",
+				"contents": "There are no API Hosts added.\n[Add API host](command:wskEntities.addEndpoint)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "openwhisk-explorer",
+					"title": "OpenWhisk Explorer",
+					"icon": "resource/sidebar-icon.svg"
+				}
+			]
+		},
+		"views": {
+			"openwhisk-explorer": [
+				{
+					"id": "wskEntities",
+					"name": "OpenWhisk Entities"
+				},
+				{
+					"id": "wskActivations",
+					"name": "Activations"
+				}
+			],
+			"explorer": [
+				{
+					"id": "wskdeploy",
+					"name": "Wskdeploy manifests"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "wskEntities.refreshEntry",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "wskAction.invokeAction",
+				"title": "Invoke"
+			},
+			{
+				"command": "wskAction.openActionCode",
+				"title": "Open code (read-only)"
+			},
+			{
+				"command": "wskAction.editActionCode",
+				"title": "Edit action code"
+			},
+			{
+				"command": "wskAction.editActionMetadata",
+				"title": "Edit metadata"
+			},
+			{
+				"command": "wskAction.deleteAction",
+				"title": "Delete"
+			},
+			{
+				"command": "wskPackage.createAction",
+				"title": "Create new action"
+			},
+			{
+				"command": "wskPackage.editPackageMetadata",
+				"title": "Edit metadata"
+			},
+			{
+				"command": "wskPackage.deletePackage",
+				"title": "Delete"
+			},
+			{
+				"command": "wskTrigger.deleteTrigger",
+				"title": "Delete"
+			},
+			{
+				"command": "wskEntities.addEndpoint",
+				"title": "Add new endpoint"
+			},
+			{
+				"command": "wskEndpoint.addNamespace",
+				"title": "Add new namespace"
+			},
+			{
+				"command": "wskEndpoint.rename",
+				"title": "Rename alias"
+			},
+			{
+				"command": "wskActivations.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "wskEndpoint.remove",
+				"title": "Remove from Explorer"
+			},
+			{
+				"command": "wskNamespace.remove",
+				"title": "Remove from Explorer"
+			},
+			{
+				"command": "wskNamespace.createPackage",
+				"title": "Create new package"
+			},
+			{
+				"command": "wskNamespace.createAction",
+				"title": "Create new action"
+			},
+			{
+				"command": "wskdeploy.createProject",
+				"title": "Create a wskdeploy project"
+			},
+			{
+				"command": "wskdeploy.runCommand",
+				"title": "Run",
+				"icon": "$(play)"
+			},
+			{
+				"command": "wskdeploy.runCommandWithDeployment",
+				"title": "Run with Deployment file",
+				"icon": "$(file-add)"
+			},
+			{
+				"command": "wskdeploy.openManifest",
+				"title": "Open manifest file"
+			},
+			{
+				"command": "wskdeploy.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "wskAction.invokeAction",
+					"when": "false"
+				},
+				{
+					"command": "wskAction.deleteAction",
+					"when": "false"
+				},
+				{
+					"command": "wskPackage.createAction",
+					"when": "false"
+				},
+				{
+					"command": "wskPackage.editPackageMetadata",
+					"when": "false"
+				},
+				{
+					"command": "wskPackage.deletePackage",
+					"when": "false"
+				},
+				{
+					"command": "wskTrigger.deleteTrigger",
+					"when": "false"
+				},
+				{
+					"command": "wskEndpoint.rename",
+					"when": "false"
+				},
+				{
+					"command": "wskEndpoint.addNamespace",
+					"when": "false"
+				},
+				{
+					"command": "wskEndpoint.remove",
+					"when": "false"
+				},
+				{
+					"command": "wskNamespace.remove",
+					"when": "false"
+				},
+				{
+					"command": "wskNamespace.createPackage",
+					"when": "false"
+				},
+				{
+					"command": "wskNamespace.createAction",
+					"when": "false"
+				},
+				{
+					"command": "wskdeploy.runCommand",
+					"when": "false"
+				},
+				{
+					"command": "wskdeploy.runCommandWithDeployment",
+					"when": "false"
+				},
+				{
+					"command": "wskdeploy.openManifest",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "wskEntities.refreshEntry",
+					"when": "view == wskEntities",
+					"group": "navigation"
+				},
+				{
+					"command": "wskEntities.addEndpoint",
+					"when": "view == wskEntities"
+				},
+				{
+					"command": "wskActivations.refresh",
+					"when": "view == wskActivations",
+					"group": "navigation"
+				},
+				{
+					"command": "wskdeploy.refresh",
+					"when": "view == wskdeploy",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "wskAction.invokeAction",
+					"when": "viewItem == wskAction",
+					"group": "inline"
+				},
+				{
+					"command": "wskAction.openActionCode",
+					"when": "viewItem == wskAction",
+					"group": "actionMenuGroup1@1"
+				},
+				{
+					"command": "wskAction.invokeAction",
+					"when": "viewItem == wskAction",
+					"group": "actionMenuGroup1@1"
+				},
+				{
+					"command": "wskAction.editActionCode",
+					"when": "viewItem == wskAction",
+					"group": "actionMenuGroup2@1"
+				},
+				{
+					"command": "wskAction.editActionMetadata",
+					"when": "viewItem == wskAction",
+					"group": "actionMenuGroup2@2"
+				},
+				{
+					"command": "wskAction.deleteAction",
+					"when": "viewItem == wskAction",
+					"group": "actionMenuGroup3@1"
+				},
+				{
+					"command": "wskPackage.createAction",
+					"when": "viewItem == wskPackage",
+					"group": "packageMenuGroup1@1"
+				},
+				{
+					"command": "wskPackage.editPackageMetadata",
+					"when": "viewItem == wskPackage",
+					"group": "packageMenuGroup2@1"
+				},
+				{
+					"command": "wskPackage.deletePackage",
+					"when": "viewItem == wskPackage",
+					"group": "packageMenuGroup3@1"
+				},
+				{
+					"command": "wskTrigger.deleteTrigger",
+					"when": "viewItem == wskTrigger"
+				},
+				{
+					"command": "wskEndpoint.addNamespace",
+					"when": "viewItem == wskEndpoint",
+					"group": "endpointMenuGroup1@1"
+				},
+				{
+					"command": "wskEndpoint.rename",
+					"when": "viewItem == wskEndpoint",
+					"group": "endpointMenuGroup1@2"
+				},
+				{
+					"command": "wskEndpoint.remove",
+					"when": "viewItem == wskEndpoint",
+					"group": "endpointMenuGroup2@1"
+				},
+				{
+					"command": "wskNamespace.createAction",
+					"when": "viewItem == wskNamespace",
+					"group": "namespaceMenuGroup1@1"
+				},
+				{
+					"command": "wskNamespace.createPackage",
+					"when": "viewItem == wskNamespace",
+					"group": "namespaceMenuGroup1@2"
+				},
+				{
+					"command": "wskNamespace.remove",
+					"when": "viewItem == wskNamespace",
+					"group": "namespaceMenuGroup2@1"
+				},
+				{
+					"command": "wskdeploy.openManifest",
+					"when": "viewItem == manifest"
+				},
+				{
+					"command": "wskdeploy.runCommand",
+					"when": "viewItem == manifestCommand"
+				},
+				{
+					"command": "wskdeploy.runCommandWithDeployment",
+					"when": "viewItem == manifestCommand"
+				},
+				{
+					"command": "wskdeploy.runCommand",
+					"when": "viewItem == manifestCommand",
+					"group": "inline"
+				}
+			],
+			"editor/context": [
+				{
+					"when": "resourceScheme == wskActionCode",
+					"command": "wskAction.invokeAction",
+					"group": "0_aeditorContextGroup@1"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack-cli --mode production",
+		"webpack": "webpack-cli --mode development",
+		"webpack-dev": "webpack-cli --mode development --watch",
+		"pretest": "tsc -p ./",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/async-retry": "^1.4.1",
+		"@types/chai": "^4.2.11",
+		"@types/command-exists": "^1.2.0",
+		"@types/glob": "^7.1.1",
+		"@types/js-yaml": "^3.12.2",
+		"@types/mocha": "^5.2.7",
+		"@types/mock-fs": "^4.10.0",
+		"@types/node": "^12.11.7",
+		"@types/request": "^2.48.4",
+		"@types/request-promise-native": "^1.0.17",
+		"@types/rimraf": "^3.0.0",
+		"@types/swagger-schema-official": "^2.0.20",
+		"@types/vscode": "^1.41.0",
+		"@typescript-eslint/eslint-plugin": "^2.34.0",
+		"@typescript-eslint/parser": "^2.34.0",
+		"chai": "^4.2.0",
+		"eslint": "^7.0.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-prettier": "^3.1.3",
+		"glob": "^7.1.5",
+		"mocha": "^7.2.0",
+		"mocha-jenkins-reporter": "^0.4.2",
+		"mock-fs": "^4.10.4",
+		"nock": "^12.0.0",
+		"prettier": "2.0.5",
+		"rimraf": "^3.0.2",
+		"sinon": "^9.0.2",
+		"ts-loader": "^7.0.5",
+		"typescript": "^3.6.4",
+		"vscode-test": "^1.2.2",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11"
+	},
+	"dependencies": {
+		"@types/sinon": "^9.0.4",
+		"async-retry": "^1.3.1",
+		"command-exists": "^1.2.9",
+		"js-yaml": "^3.13.1",
+		"jsoneditor": "^8.6.4",
+		"moment": "^2.24.0",
+		"openwhisk": "^3.21.2",
+		"request": "^2.88.0",
+		"request-promise-native": "^1.0.8"
+	}
+}

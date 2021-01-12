@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigger Information</title>
+    <link href="{{nodeModulePath}}/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="{{nodeModulePath}}/jsoneditor/dist/jsoneditor.min.js"></script>
+    <link href="{{webviewTemplatePath}}/css/common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Trigger Information</h1>
+    <table>
+        <tr>
+            <th>Trigger name</th>
+            <td id="name"></td>
+        </tr>
+        <tr>
+            <th>Parameters</th>
+            <td>
+                <div id="triggerParameters" class="editor"></div>
+            </td>
+        </tr>
+        <tr>
+            <th>Annotations</th>
+            <td>
+                <div id="triggerAnnotations" class="editor"></div>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button class="button" onclick="update()">Update trigger</button>
+    </div>
+
+    <h2>Connected actions</h1>
+    <table id="ruleTable">
+        <tr>
+            <th>Rule</th>
+            <th>Action</th>
+        </tr>
+    </table>
+    <template id="ruleRecord">
+        <tr>
+            <td class=rule></td>
+            <td class=action></td>
+        </tr>
+    </template>
+</body>
+<script>
+    const vscode = acquireVsCodeApi();
+    const parameters = document.getElementById('parameters');
+    const triggerName = document.getElementById('name');
+
+    // create the editor instance
+    const triggerParameters = document.getElementById("triggerParameters")
+    const triggerAnnotations = document.getElementById("triggerAnnotations")
+    const editorOption = {
+        mode: "code",
+        indentation: 4,
+        enableSort: false,
+        enableTransform: false,
+        statusBar: false,
+    };
+    const paramsEditor = new JSONEditor(triggerParameters, editorOption);
+    const annotationsEditor = new JSONEditor(triggerAnnotations, editorOption);
+
+    vscode.postMessage({command: 'initialized'});
+    window.addEventListener('message', event => {
+        const message = event.data;
+        if (message.command === 'getData') {
+            setTriggerData(message);
+        }
+    });
+
+    function update() {
+        vscode.postMessage({
+            command: 'update',
+            parameters: paramsEditor.getText(),
+            annotations: annotationsEditor.getText()
+        })
+    }
+    
+    function setTriggerData(state) {
+        triggerName.textContent = state.name;
+        
+        // set editor contents
+        paramsEditor.set(JSON.parse(state.params));
+        annotationsEditor.set(JSON.parse(state.annotations));
+        
+        let t = document.querySelector('#ruleRecord');
+        let tb = document.querySelector('#ruleTable');
+        
+        if (state.rules) {
+            for (let [name, rule] of Object.entries(state.rules)) {
+                let row = document.importNode(t.content, true);
+                let td = row.querySelectorAll('td');
+                td[0].textContent = name;
+                td[1].textContent = rule.action.name;
+                tb.appendChild(row);
+            }
+        }
+    }
+</script>
+</html>
