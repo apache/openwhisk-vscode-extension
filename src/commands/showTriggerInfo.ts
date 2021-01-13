@@ -70,7 +70,6 @@ export async function showTriggerInfo(
                 name: triggerDesc.name,
                 params: params,
                 annotations: annotations,
-                //@ts-ignore
                 rules: triggerDesc.rules,
             });
         }
