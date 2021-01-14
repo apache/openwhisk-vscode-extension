@@ -1,7 +1,7 @@
 {
 	"name": "openwhisk-vscode-extension",
-	"displayName": "VSCode extension for Apache Openwhisk",
-	"description": "VSCode extension for Apache OpenWhisk",
+	"displayName": "VSCode Extension for Apache Openwhisk",
+	"description": "VSCode Extension for Apache OpenWhisk",
 	"version": "1.1.0",
 	"publisher": "Apache Openwhisk",
     "author": "Apache Software Foundation",
