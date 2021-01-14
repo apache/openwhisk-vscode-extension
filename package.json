@@ -1,9 +1,10 @@
 {
 	"name": "openwhisk-vscode-extension",
-	"displayName": "DevTools for Apache Openwhisk",
-	"description": "DevTools for Apache OpenWhisk",
+	"displayName": "vscode extension for Apache Openwhisk",
+	"description": "vscode extension for Apache OpenWhisk",
 	"version": "1.1.0",
-	"publisher": "NAVER",
+	"publisher": "Apache Openwhisk",
+    "author": "Apache Software Foundation",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -12,10 +13,10 @@
 	"categories": [
 		"Other"
 	],
-	"homepage": "https://github.com/naver/openwhisk-vscode-extension/blob/master/README.md",
+	"homepage": "https://github.com/apache/openwhisk-vscode-extension/blob/master/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/naver/openwhisk-vscode-extension.git"
+		"url": "https://github.com/apache/openwhisk-vscode-extension.git"
 	},
 	"activationEvents": [
 		"onCommand:wskdeploy.createProject",

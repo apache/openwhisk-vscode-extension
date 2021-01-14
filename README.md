@@ -45,22 +45,23 @@ This extension contributes the following commands to the Command palette.
 ## How to debug in your local
 
 ```bash
-git clone https://github.com/naver/openwhisk-vscode-extension.git
+git clone https://github.com/apache/openwhisk-vscode-extension.git
 code ./openwhisk-vscode-extension # Open openwhisk-vscode-extension in VSCode
 ```
 
 Press `F5` button(run debug)  
 
-Learn more about debugging [here](https://github.com/naver/openwhisk-vscode-extension/blob/master/vsc-extension-quickstart.md)
+Learn more about debugging [here](https://github.com/apache/openwhisk-vscode-extension/blob/master/vsc-extension-quickstart.md)
 
 ## License
 
 ```
-Copyright 2020-present NAVER Corp.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
 
    http://www.apache.org/licenses/LICENSE-2.0
 
@@ -75,7 +76,7 @@ limitations under the License.
 
 Portions of this product include SVG files developed by the XEIcon project (https://github.com/xpressengine/XEIcon).
  
- - Dark theme: https://github.com/naver/openwhisk-vscode-extension/tree/master/resource/dark
- - Light theme: https://github.com/naver/openwhisk-vscode-extension/tree/master/resource/light
+ - Dark theme: https://github.com/apache/openwhisk-vscode-extension/tree/master/resource/dark
+ - Light theme: https://github.com/apache/openwhisk-vscode-extension/tree/master/resource/light
 
 Those files are distributed under the XEIcon license (https://github.com/xpressengine/XEIcon#license).   
