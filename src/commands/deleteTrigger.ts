@@ -32,7 +32,7 @@ export async function deleteTrigger(trigger: WskTrigger): Promise<void> {
             .delete(triggerName)
             .then(() => {
                 vscode.window.showInformationMessage(
-                    `Trigger ${triggerName} is deleted succesfully.`
+                    `Trigger ${triggerName} is deleted successfully.`
                 );
             })
             .catch(() => vscode.window.showErrorMessage(`Failed to delete ${triggerName}`));

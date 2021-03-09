@@ -84,7 +84,7 @@ export async function showTriggerInfo(
                     parameters: convertObjToKeyVal(parameterObject),
                 },
             });
-            vscode.window.showInformationMessage('The trigger is updated succesfully.');
+            vscode.window.showInformationMessage('The trigger is updated successfully.');
             triggerDesc = null;
         }
     });

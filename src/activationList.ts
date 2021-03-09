@@ -91,10 +91,10 @@ export class WskActivationProvider implements vscode.TreeDataProvider<WskActivat
         const start = activation.annotations?.find((x) => x.key === 'initTime') ? 'cold ' : 'warm';
 
         const durationFormat = `${duration} ms`;
-        const acitonName = `${activation.name}:${activation.version}`;
+        const actionName = `${activation.name}:${activation.version}`;
 
         if (withActionName) {
-            return [startTime, id, status, start, durationFormat, acitonName].join('\t');
+            return [startTime, id, status, start, durationFormat, actionName].join('\t');
         }
         return [startTime, id, status, start, durationFormat].join('\t');
     }

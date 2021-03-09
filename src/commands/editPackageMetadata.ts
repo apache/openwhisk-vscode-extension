@@ -18,7 +18,7 @@ import * as vscode from 'vscode';
 
 import { WskPackage } from '../wskEntity';
 import { convertKeyValToObj, convertObjToKeyVal } from '../common';
-import { openMetadatEditor } from './common/openMetadataEditor';
+import { openMetadataEditor } from './common/openMetadataEditor';
 
 export async function editPackageMetadata(
     pkg: WskPackage,
@@ -36,12 +36,12 @@ export async function editPackageMetadata(
                 parameters: convertObjToKeyVal(params),
                 annotations: convertObjToKeyVal(annotations),
             });
-            vscode.window.showInformationMessage('The package is updated succesfully.');
+            vscode.window.showInformationMessage('The package is updated successfully.');
         } catch (e) {
             vscode.window.showErrorMessage(`Failed to update the package (${e.message})`);
         }
     };
-    await openMetadatEditor(
+    await openMetadataEditor(
         'editPackageMetadata',
         `Edit package metadata: ${packageName}`,
         context,

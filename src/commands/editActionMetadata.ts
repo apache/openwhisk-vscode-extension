@@ -18,7 +18,7 @@ import * as vscode from 'vscode';
 
 import { WskAction } from '../wskEntity';
 import { convertKeyValToObj } from '../common';
-import { openMetadatEditor } from './common/openMetadataEditor';
+import { openMetadataEditor } from './common/openMetadataEditor';
 import { Limits } from 'openwhisk';
 
 export async function editActionMetadata(
@@ -40,13 +40,13 @@ export async function editActionMetadata(
                 annotations: annotations,
                 limits: limits,
             });
-            vscode.window.showInformationMessage('The action is updated succesfully.');
+            vscode.window.showInformationMessage('The action is updated successfully.');
         } catch (e) {
             vscode.window.showErrorMessage(`Failed to update the action (${e.message})`);
         }
     };
 
-    await openMetadatEditor(
+    await openMetadataEditor(
         'editActionMetadata',
         `Edit action metadata: ${action.actionDesc.name}`,
         context,

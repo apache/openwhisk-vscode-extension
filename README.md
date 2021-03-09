@@ -20,7 +20,7 @@ This extension finds the `.wskprops` configuration file located in the home path
 - Explore all entities in your endpoints/namespaces.
     - The .wskprops file is automatically registered.
     - You can add the API host manually.
-    - You can add namespace manually by API auth key.
+    - You can add the namespace manually by API auth key.
 - Show the action code with syntax highlighting.
 - Edit the action code on the remote server.
 - Invoke the action remotely and get the activation result.
