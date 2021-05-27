@@ -41,7 +41,7 @@ packages:
             place: the Shire
             children: 13
             height: 1.2
-  
+
       rules:
         meetPersonRule:
           trigger: meetPerson
