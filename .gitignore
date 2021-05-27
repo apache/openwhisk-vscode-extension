@@ -1,0 +1,27 @@
+# Eclipse
+bin/
+**/.project
+.settings/
+.classpath
+.cache-main
+.cache-tests
+
+# Linux
+*~
+*.swp
+
+# Mac
+.DS_Store
+
+# NodeJS
+node_modules
+
+# IntelliJ
+.idea
+*.class
+*.iml
+out/
+
+# VSCode
+.vscode/
+

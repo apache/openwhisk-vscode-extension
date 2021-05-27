@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
@@ -15,34 +17,23 @@
 # limitations under the License.
 #
 
-packages:
-    hello_world_package:
-      version: 1.0
-      license: Apache-2.0
-      actions:
-        hello_world:
-          function: src/index.js
-          runtime: nodejs:default
-          inputs:
-            name: string
-            place: string
-            children: integer
-            height: float
-          outputs:
-            greeting: string
-            details: string
-        hello_world: # Duplicate name is not valid, but allowed in manifest panel
-          function: src/index.js
+set -e
 
-      triggers:
-        meetPerson:
-          inputs:
-            name: Sam
-            place: the Shire
-            children: 13
-            height: 1.2
+SCRIPTDIR=$(cd $(dirname "$0") && pwd)
+ROOTDIR="$SCRIPTDIR/../"
+HOMEDIR="$SCRIPTDIR/../../"
+UTIL_DIR="$HOMEDIR/openwhisk-utilities"
 
-      rules:
-        meetPersonRule:
-          trigger: meetPerson
-          action: hello_world
+# clone OpenWhisk utilities repo. in order to run scanCode.py
+cd $HOMEDIR
+
+if [ ! -d "openwhisk-utilities" ] ; then
+    git clone https://github.com/apache/openwhisk-utilities.git
+else
+    cd "openwhisk-utilities"
+    git pull
+fi
+
+# run scancode
+cd $UTIL_DIR
+scancode/scanCode.py --config scancode/ASF-Release.cfg $ROOTDIR
