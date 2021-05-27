@@ -20,7 +20,7 @@ import * as fs from 'fs';
 import { WEBVIEW_TEMPLATE_PATH } from '../../constant/path';
 import { Limits } from 'openwhisk';
 
-export async function openMetadatEditor(
+export async function openMetadataEditor(
     viewType: string,
     tabTitle: string,
     context: vscode.ExtensionContext,

@@ -28,7 +28,7 @@ export async function deleteAction(action: WskAction): Promise<void> {
             .delete(action.getFullName())
             .then((target) => {
                 vscode.window.showInformationMessage(
-                    `Action ${target.name} is deleted succesfully.`
+                    `Action ${target.name} is deleted successfully.`
                 );
             })
             .catch(() => vscode.window.showErrorMessage(`Failed to delete ${action.label}`));

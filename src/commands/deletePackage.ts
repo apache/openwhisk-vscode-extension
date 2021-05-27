@@ -29,7 +29,7 @@ export async function deletePackage(pkg: WskPackage): Promise<void> {
             .delete(packageName)
             .then(() => {
                 vscode.window.showInformationMessage(
-                    `Package ${packageName} is deleted succesfully.`
+                    `Package ${packageName} is deleted successfully.`
                 );
             })
             .catch((error) =>

@@ -22,7 +22,7 @@ export async function showConfirmMessage(message: string, action = 'delete') {
         message,
         { modal: true },
         { action: 'confirm', title: action, isCloseAffordance: false },
-        { action: 'cancel', title: 'Calcel', isCloseAffordance: true }
+        { action: 'cancel', title: 'Cancel', isCloseAffordance: true }
     );
     return res.action === 'confirm';
 }
