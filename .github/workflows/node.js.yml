@@ -40,5 +40,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: sudo apt-get install xvfb
     - run: npm ci
+    - name: Run scancode
+      run: |
+        ./travis/scancode.sh
     - run: xvfb-run --auto-servernum npm test
 
