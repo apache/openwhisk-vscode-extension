@@ -29,12 +29,8 @@ cd $HOMEDIR
 
 if [ ! -d "openwhisk-utilities" ] ; then
     git clone https://github.com/apache/openwhisk-utilities.git
-    git fetch
-    git checkout add-typescript
 else
     cd "openwhisk-utilities"
-    git fetch
-    git checkout add-typescript
     git pull
 fi
 
