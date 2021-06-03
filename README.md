@@ -67,7 +67,7 @@ This extension contributes the following commands to the Command palette.
 
 - [vscode](https://code.visualstudio.com/) >= 1.41.0
 - [Node.js](https://nodejs.org/en/download/) >= 12.x
-- Have an OpenWhisk deployment available, which you set up by following this [guide](https://openwhisk.apache.org/documentation.html#pre-requisites) or by using one of the managed OpenWhisk offerings (e.g., from IBM, Adobe or Nimbella).
+- Have an OpenWhisk deployment available, which you set up by following this [guide](https://openwhisk.apache.org/documentation.html#pre-requisites) or by using one of the managed OpenWhisk offerings (e.g., from IBM, Adobe or Nimbella). Note, deployments with self signed SSL certificates may not work with this extension.
 
 ### Set up
 
