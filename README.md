@@ -67,7 +67,7 @@ This extension contributes the following commands to the Command palette.
 
 - [vscode](https://code.visualstudio.com/) >= 1.41.0
 - [Node.js](https://nodejs.org/en/download/) >= 12.x
-- Have a OpenWhisk deployment available, can get set up by following [guide](https://openwhisk.apache.org/documentation.html#pre-requisites)
+- Have an OpenWhisk deployment available, which you set up by following this [guide](https://openwhisk.apache.org/documentation.html#pre-requisites) or by using one of the managed OpenWhisk offerings (e.g., from IBM, Adobe or Nimbella).
 
 ### Set up
 
@@ -78,8 +78,8 @@ This extension contributes the following commands to the Command palette.
     code ./openwhisk-vscode-extension # Open openwhisk-vscode-extension in VS Code
     ```
 
-2. In terminal execute command `npm install` to install extension dependencies
-3. In terminal execute command `npm run webpack-dev` to start up the extension builder in watch mode (allows for making changes to files and rebuilding automatically)
+2. In your terminal, execute the command `npm install` to install extension dependencies
+3. In your terminal, execute the command `npm run webpack-dev` to start up the extension builder in watch mode (allows for making changes to files and rebuilding automatically)
 4. Open up the `src/extension.ts` file for editing
 5. In the `src/extension.ts` file press `F5` button to start debugger and select `VS Code Extension Development` if a modal appears at the top of the VS Code window
 6. Interact with the `DEBUG CONSOLE` for real time debugging of the extension and learn more about debugging [here](https://github.com/apache/openwhisk-vscode-extension/blob/master/vsc-extension-quickstart.md)
