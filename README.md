@@ -61,16 +61,28 @@ This extension contributes the following commands to the Command palette.
 
 - `Create a wskdeploy project`: creates a wskdeploy project
 
-## How to debug in your local
+## How to debug in your local environment
 
-```bash
-git clone https://github.com/apache/openwhisk-vscode-extension.git
-code ./openwhisk-vscode-extension # Open openwhisk-vscode-extension in VSCode
-```
+### Requirements
 
-Press `F5` button(run debug)
+- [vscode](https://code.visualstudio.com/) >= 1.41.0
+- [Node.js](https://nodejs.org/en/download/) >= 12.x
+- Have a OpenWhisk deployment available, can get set up by following [guide](https://openwhisk.apache.org/documentation.html#pre-requisites)
 
-Learn more about debugging [here](https://github.com/apache/openwhisk-vscode-extension/blob/master/vsc-extension-quickstart.md)
+### Set up
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/apache/openwhisk-vscode-extension.git
+    code ./openwhisk-vscode-extension # Open openwhisk-vscode-extension in VS Code
+    ```
+
+2. In terminal execute command `npm install` to install extension dependencies
+3. In terminal execute command `npm run webpack-dev` to start up the extension builder in watch mode (allows for making changes to files and rebuilding automatically)
+4. Open up the `src/extension.ts` file for editing
+5. In the `src/extension.ts` file press `F5` button to start debugger and select `VS Code Extension Development` if a modal appears at the top of the VS Code window
+6. Interact with the `DEBUG CONSOLE` for real time debugging of the extension and learn more about debugging [here](https://github.com/apache/openwhisk-vscode-extension/blob/master/vsc-extension-quickstart.md)
 
 ## License
 
