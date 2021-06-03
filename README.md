@@ -17,11 +17,11 @@
 #
 -->
 
-# OpenWhisk VSCode Extension
+# OpenWhisk VS Code Extension
 
-An **openwhisk-vscode-extension** is an open-source VSCode extension for [Apache OpenWhisk](https://openwhisk.apache.org/). It manages the wskdeploy manifest file and makes deployment easy. You can also create and update actions and packages in VSCode.
+An **openwhisk-vscode-extension** is an open-source VS Code extension for [Apache OpenWhisk](https://openwhisk.apache.org/). It manages the wskdeploy manifest file and makes deployment easy. You can also create and update actions and packages in VS Code.
 
-Try creating and editing your action code in the VSCode!
+Try creating and editing your action code in the VS Code!
 
 ## Prerequisites
 
