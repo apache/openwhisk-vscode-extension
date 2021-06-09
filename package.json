@@ -400,7 +400,7 @@
 		"js-yaml": "^3.13.1",
 		"jsoneditor": "^8.6.4",
 		"moment": "^2.24.0",
-		"openwhisk": "^3.21.2",
+		"openwhisk": "^3.21.4",
 		"request": "^2.88.0",
 		"request-promise-native": "^1.0.8"
 	}
