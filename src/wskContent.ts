@@ -46,10 +46,10 @@ export class ActionCodeProvider implements vscode.TextDocumentContentProvider {
         if (content.exec.kind === 'sequence') {
             return 'Codeview does not support sequence actions.';
         }
-        if ((content.exec.kind as string) === 'blackbox' && !content.exec.code) {
+        if ((content.exec.kind as string) === 'blackbox' && !(content.exec as openwhisk.Exec).code) {
             return 'Codeview does not support native docker actions.';
         }
-        return Promise.resolve(content.exec.code);
+        return Promise.resolve((content.exec as openwhisk.Exec).code);
     }
 }
 
