@@ -75,6 +75,7 @@ vscode.workspace.onDidSaveTextDocument(async (doc: vscode.TextDocument) => {
             await action.client.actions.update({
                 name: action.getFullName(),
                 action: doc.getText(),
+                kind: action.kind,
             });
             vscode.window.showInformationMessage(`The action code is updated`);
         }
