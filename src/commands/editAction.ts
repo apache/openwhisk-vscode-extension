@@ -19,6 +19,7 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 import * as os from 'os';
 import * as path from 'path';
+import { Exec } from 'openwhisk';
 import { showConfirmMessage } from '../common';
 
 const actionEditMap: { [key: string]: WskAction } = {};
@@ -43,16 +44,17 @@ export async function editAction(action: WskAction): Promise<void> {
         vscode.window.showErrorMessage("Can't edit sequence action type");
         return;
     }
-    if (content.exec.binary) {
+
+    if ((content.exec as Exec).binary) {
         vscode.window.showErrorMessage("Can't edit binary action code");
         return;
     }
-    if ((content.exec.kind as string) === 'blackbox' && !content.exec.code) {
+    if ((content.exec.kind as string) === 'blackbox' && !(content.exec as Exec).code) {
         vscode.window.showErrorMessage("Can't edit blackbox action without action code");
         return;
     }
-    if (content.exec.code) {
-        fs.writeFileSync(localFilePath, content.exec.code);
+    if ((content.exec as Exec).code) {
+        fs.writeFileSync(localFilePath, (content.exec as Exec).code);
     }
 
     vscode.workspace.openTextDocument(localFilePath).then((textDocument: vscode.TextDocument) => {
@@ -75,6 +77,7 @@ vscode.workspace.onDidSaveTextDocument(async (doc: vscode.TextDocument) => {
             await action.client.actions.update({
                 name: action.getFullName(),
                 action: doc.getText(),
+                kind: action.kind,
             });
             vscode.window.showInformationMessage(`The action code is updated`);
         }
